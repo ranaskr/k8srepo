@@ -1,0 +1,22 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: taint-deploy
+spec:
+  replicas: 4 
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - image: nginx:1.7.9
+        name: nginx8s
+        ports:
+        - cointainerPort: 80
+      containers:
+      - image: busybox
+        name: busybox
+        args:
+        - "sleep"
+        - "1000000"
